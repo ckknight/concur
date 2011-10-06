@@ -4,7 +4,7 @@
 
 ## Issues
 
-  If you find any issues with Escort or have any suggestions or feedback, please feel free to visit the [github
+  If you find any issues with Concur or have any suggestions or feedback, please feel free to visit the [github
   issues](https://github.com/ckknight/concur/issues) page.
 
 ## License
