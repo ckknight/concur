@@ -530,5 +530,27 @@ module.exports = {
             assert.strictEqual(2, times.length);
             assert.ok(Math.abs(times[1] - times[0] - 500) < 50);
         }, 550);
+    },
+    
+    "sleep": function () {
+        var count = 0;
+        concur.sleep(50, function () {
+            count += 1;
+        });
+        setTimeout(function () {
+            assert.strictEqual(1, count);
+        }, 100);
+    },
+    
+    "sleep with thisArg": function () {
+        var count = 0;
+        var obj = {};
+        concur.sleep(50, function () {
+            assert.strictEqual(obj, this);
+            count += 1;
+        }, obj);
+        setTimeout(function () {
+            assert.strictEqual(1, count);
+        }, 100);
     }
 };
