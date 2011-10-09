@@ -56,6 +56,20 @@ module.exports = {
         }, 50);
     },
     
+    "nextTick with thisArg": function () {
+        var obj = {};
+        var ran = false;
+        concur.nextTick(function () {
+            assert.strictEqual(obj, this);
+            assert.strictEqual(false, ran);
+            ran = true;
+        }, obj);
+        
+        setTimeout(function () {
+            assert.strictEqual(true, ran);
+        }, 50);
+    },
+    
     "rangeLimit": function () {
         var started = [];
         var ranFinish = false;
