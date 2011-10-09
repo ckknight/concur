@@ -479,7 +479,13 @@ module.exports = {
                 func("alpha", function (err, value) {
                     assert.equal(null, err);
                     assert.strictEqual("alpha", value);
-                    ranFinish = true;
+                    func.clear();
+                    hit = [];
+                    func("alpha", function (err, value) {
+                        assert.equal(null, err);
+                        assert.strictEqual("alpha", value);
+                        ranFinish = true;
+                    });
                 });
             });
         });
