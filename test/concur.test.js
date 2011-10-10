@@ -572,5 +572,9 @@ module.exports = {
         setTimeout(function () {
             assert.strictEqual(1, count);
         }, 100);
+    },
+    
+    "raise": function () {
+        // honestly, not sure how to test this one properly, since it is an uncaught exception, by definition.
     }
 };

@@ -351,6 +351,25 @@
         // executed in 1 second
     });
 
+## raise (or throw)
+  Throw an error asynchronously that will bubble to the very top of the stack. This is specifically handy for if a function must return a value, such as browser DOM events returning false.
+  
+  `throw` is provided as well as `raise` (they are aliases), but some JavaScript interpreters can't interpret `concur.throw` properly, and `concur["throw"]` would be necessary. If you use a compile-to-javascript language like CoffeeScript or UglifyJS, you should not have any problems.
+  
+  If used in a server-side application without uncaught exception handling, this will cause your process to die.
+  
+  - `throw or raise(err)`: Throw an error on the next tick.
+
+### Example
+    someElement.onclick = function () {
+        try {
+            somethingWhichMightBreak();
+        } catch (e) {
+            concur.raise(e);
+        }
+        return false;
+    };
+
 ## noConflict
   Return the `concur` library and replace the global `concur` reference with the previous value.
 
